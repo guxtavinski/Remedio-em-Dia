@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Remédio em Dia - Login</title>
+</head>
+<body>
+
+    <h1>Remédio em Dia</h1>
+
+    <form>
+        <label for="email">E-mail</label><br>
+        <input type="text" id="email" placeholder="seu@email.com"><br><br>
+
+        <label for="senha">Senha</label><br>
+        <input type="password" id="senha" placeholder="Sua senha"><br><br>
+
+        <button type="button" id="btnLogin" onclick="realizarLogin()">
+            Entrar
+        </button>
+    </form>
+
+    <p id="mensagem"></p>
+
+    <script>
+        const usuarioCadastrado = {
+            email: "joao@email.com",
+            senha: "senha123"
+        };
+
+        function realizarLogin() {
+            const email = document.getElementById("email").value;
+            const senha = document.getElementById("senha").value;
+            const mensagem = document.getElementById("mensagem");
+
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+            if (!emailRegex.test(email)) {
+                mensagem.textContent = "Email invalido";
+                return;
+            }
+
+            if (
+                email !== usuarioCadastrado.email ||
+                senha !== usuarioCadastrado.senha
+            ) {
+                mensagem.textContent = "Credenciais invalidas";
+                return;
+            }
+
+            mensagem.textContent = "Login realizado com sucesso";
+        }
+    </script>
+
+</body>
+</html>
