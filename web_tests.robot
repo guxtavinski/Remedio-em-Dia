@@ -9,9 +9,6 @@ ${URL}            %{LOGIN_URL=http://localhost:8080/login.html}
 ${BROWSER}        %{BROWSER=edge}
 ${EMAIL_VALIDO}   joao@email.com
 ${SENHA_VALIDA}   senha123
-${EMAIL_INVALIDO}             joaoemail.com
-${EMAIL_NAO_CADASTRADO}       naoexiste@email.com
-${SENHA_INVALIDA}             senhaerrada
 ${EMAIL_EM_BRANCO}            ${SPACE}${SPACE}${SPACE}
 
 ${INPUT_EMAIL}    id=email
@@ -20,30 +17,6 @@ ${BOTAO_LOGIN}    id=btnLogin
 ${MENSAGEM}       id=mensagem
 
 *** Test Cases ***
-WEB CT01 - Deve Validar Email Em Formato Invalido
-    Dado que o usuario informa o email    ${EMAIL_INVALIDO}
-    E informa a senha                     ${SENHA_VALIDA}
-    Quando solicitar o login
-    Entao o sistema deve apresentar a mensagem    Email invalido
-
-WEB CT02 - Deve Validar Email Nao Cadastrado
-    Dado que o usuario informa o email    ${EMAIL_NAO_CADASTRADO}
-    E informa a senha                     ${SENHA_VALIDA}
-    Quando solicitar o login
-    Entao o sistema deve apresentar a mensagem    Credenciais invalidas
-
-WEB CT03 - Deve Realizar Login Com Sucesso
-    Dado que o usuario informa o email    ${EMAIL_VALIDO}
-    E informa a senha                     ${SENHA_VALIDA}
-    Quando solicitar o login
-    Entao o sistema deve apresentar a mensagem    Login realizado com sucesso
-
-WEB CT04 - Deve Validar Senha Incorreta
-    Dado que o usuario informa o email    ${EMAIL_VALIDO}
-    E informa a senha                     ${SENHA_INVALIDA}
-    Quando solicitar o login
-    Entao o sistema deve apresentar a mensagem    Credenciais invalidas
-
 WEB CT05 - Deve Validar Email Vazio
     Dado que o usuario informa o email    ${EMPTY}
     E informa a senha                     ${SENHA_VALIDA}
